@@ -1,6 +1,6 @@
 ---
 name: stock-screener
-description: Screen stocks and backtest trading strategies using reportify-sdk (Python) and reportify-cli. Supports 80+ technical indicators (MA/EMA/MACD/KDJ/BOLL/RSI) and fundamental factors (PE/PB/ROE/ROA/EPS), time series analysis, multi-condition screening, and strategy backtesting. Use when user needs stock screening, filtering stocks by conditions, quantitative analysis, or backtesting trading strategies.
+description: "Screen stocks and backtest trading strategies using reportify-sdk (Python) and reportify-cli. Supports 80+ technical indicators (MA/EMA/MACD/KDJ/BOLL/RSI) and fundamental factors (PE/PB/ROE/ROA/EPS), time series analysis, multi-condition screening, and strategy backtesting. Use when user needs stock screening, filtering stocks by conditions, quantitative analysis, or backtesting trading strategies."
 ---
 
 # Stock Screener & Backtesting

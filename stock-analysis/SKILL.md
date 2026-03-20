@@ -1,6 +1,6 @@
 ---
 name: stock-analysis
-description: Analyze stocks and companies using reportify-cli. Get company profiles, financial statements, stock quotes, technical indicators, analyst reports, earnings transcripts, and regulatory filings. Also handles deep financial research — cross-quarter earnings analysis, FOMC analysis, multi-source synthesis, and news aggregation. Use when user asks about a specific stock, company, investment analysis, earnings review, or requests deep financial research.
+description: "Analyze stocks and companies using reportify-cli. Get company profiles, financial statements, stock quotes, technical indicators, analyst reports, earnings transcripts, and regulatory filings. Also handles deep financial research, cross-quarter earnings analysis, FOMC analysis, multi-source synthesis, and news aggregation. Use when user asks about a specific stock, company, investment analysis, earnings review, or requests deep financial research."
 ---
 
 # Stock Analysis & Financial Research

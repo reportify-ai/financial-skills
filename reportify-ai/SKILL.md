@@ -1,6 +1,6 @@
 ---
 name: reportify-ai
-description: Access Reportify financial data API via command line. Search documents, get stock data, financial statements, market quotes, quantitative screening, backtesting, and delegate complex research tasks. Covers China A-shares, Hong Kong, and US markets. Use when user needs financial information, stock data, company reports, quantitative analysis, or deep investment research. Shortcuts available: `$search`, `$stock`, `$quant`, `$agent` map to `reportify-cli search/stock/quant/agent`.
+description: "Access Reportify financial data API via command line. Search documents, get stock data, financial statements, market quotes, quantitative screening, backtesting, and delegate complex research tasks. Covers China A-shares, Hong Kong, and US markets. Use when user needs financial information, stock data, company reports, quantitative analysis, or deep investment research."
 ---
 
 # Reportify AI
