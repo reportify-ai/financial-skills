@@ -15,12 +15,12 @@ If the key is missing, direct the user to https://reportify.cn/skills/api-keys t
 
 ### 1. Remove existing reportify skills
 
-Before installing, remove any existing skills whose directory name starts with `reportify` or `stock-` under `~/.claude/skills`:
+Before installing, remove any existing skills whose directory name starts with `reportify` or `stock-` under `~/.openclaw/skills`:
 
 ```bash
-rm -rf ~/.claude/skills/reportify-ai
-rm -rf ~/.claude/skills/stock-analysis
-rm -rf ~/.claude/skills/stock-screener
+rm -rf ~/.openclaw/skills/reportify-ai
+rm -rf ~/.openclaw/skills/stock-analysis
+rm -rf ~/.openclaw/skills/stock-screener
 ```
 
 ### 2. Install reportify-cli
@@ -48,21 +48,21 @@ Download the skill definitions and references from GitHub:
 
 ```bash
 # reportify-ai (comprehensive CLI reference)
-mkdir -p ~/.claude/skills/reportify-ai/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/SKILL.md -o ~/.claude/skills/reportify-ai/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/api_reference.md -o ~/.claude/skills/reportify-ai/references/api_reference.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/formula.md -o ~/.claude/skills/reportify-ai/references/formula.md
+mkdir -p ~/.openclaw/skills/reportify-ai/references
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/SKILL.md -o ~/.openclaw/skills/reportify-ai/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/api_reference.md -o ~/.openclaw/skills/reportify-ai/references/api_reference.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/formula.md -o ~/.openclaw/skills/reportify-ai/references/formula.md
 
 # stock-analysis (individual stock analysis + deep research)
-mkdir -p ~/.claude/skills/stock-analysis/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/SKILL.md -o ~/.claude/skills/stock-analysis/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/references/api_reference.md -o ~/.claude/skills/stock-analysis/references/api_reference.md
+mkdir -p ~/.openclaw/skills/stock-analysis/references
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/SKILL.md -o ~/.openclaw/skills/stock-analysis/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/references/api_reference.md -o ~/.openclaw/skills/stock-analysis/references/api_reference.md
 
 # stock-screener (quantitative screening + backtesting)
-mkdir -p ~/.claude/skills/stock-screener/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/SKILL.md -o ~/.claude/skills/stock-screener/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/formula.md -o ~/.claude/skills/stock-screener/references/formula.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/scenarios.md -o ~/.claude/skills/stock-screener/references/scenarios.md
+mkdir -p ~/.openclaw/skills/stock-screener/references
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/SKILL.md -o ~/.openclaw/skills/stock-screener/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/formula.md -o ~/.openclaw/skills/stock-screener/references/formula.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/scenarios.md -o ~/.openclaw/skills/stock-screener/references/scenarios.md
 ```
 
 ### 4. Set the API key for the current session
@@ -79,18 +79,18 @@ All of these files should exist after the download:
 
 ```bash
 echo "=== reportify-ai ==="
-test -f ~/.claude/skills/reportify-ai/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
-test -f ~/.claude/skills/reportify-ai/references/api_reference.md && echo "api_reference.md OK" || echo "api_reference.md MISSING"
-test -f ~/.claude/skills/reportify-ai/references/formula.md && echo "formula.md OK" || echo "formula.md MISSING"
+test -f ~/.openclaw/skills/reportify-ai/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
+test -f ~/.openclaw/skills/reportify-ai/references/api_reference.md && echo "api_reference.md OK" || echo "api_reference.md MISSING"
+test -f ~/.openclaw/skills/reportify-ai/references/formula.md && echo "formula.md OK" || echo "formula.md MISSING"
 
 echo "=== stock-analysis ==="
-test -f ~/.claude/skills/stock-analysis/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
-test -f ~/.claude/skills/stock-analysis/references/api_reference.md && echo "api_reference.md OK" || echo "api_reference.md MISSING"
+test -f ~/.openclaw/skills/stock-analysis/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
+test -f ~/.openclaw/skills/stock-analysis/references/api_reference.md && echo "api_reference.md OK" || echo "api_reference.md MISSING"
 
 echo "=== stock-screener ==="
-test -f ~/.claude/skills/stock-screener/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
-test -f ~/.claude/skills/stock-screener/references/formula.md && echo "formula.md OK" || echo "formula.md MISSING"
-test -f ~/.claude/skills/stock-screener/references/scenarios.md && echo "scenarios.md OK" || echo "scenarios.md MISSING"
+test -f ~/.openclaw/skills/stock-screener/SKILL.md && echo "SKILL.md OK" || echo "SKILL.md MISSING"
+test -f ~/.openclaw/skills/stock-screener/references/formula.md && echo "formula.md OK" || echo "formula.md MISSING"
+test -f ~/.openclaw/skills/stock-screener/references/scenarios.md && echo "scenarios.md OK" || echo "scenarios.md MISSING"
 
 echo "=== API Key ==="
 echo "REPORTIFY_API_KEY=${REPORTIFY_API_KEY:+is set}"
