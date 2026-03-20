@@ -12,32 +12,53 @@ A collection of financial analysis skills for AI agents, powered by [Reportify](
 
 Each skill is self-contained and can be installed independently.
 
-## Installation
+## Install via Claude Code
 
-### CLI (required for all skills)
+Run the following in Claude Code to auto-install all skills:
+
+```
+/install-skill https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
+```
+
+Or paste the install URL directly in a conversation:
+
+```
+https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
+```
+
+Claude Code will read the install guide and set up everything automatically — including downloading skills, installing `reportify-cli`, and configuring your API key.
+
+## Manual Installation
+
+### 1. Install CLI (required for all skills)
 
 ```bash
 pip3 install reportify-cli
 ```
 
-### Python SDK (required for stock-screener)
+### 2. Install Python SDK (required for stock-screener)
 
 ```bash
 pip3 install reportify-sdk
 ```
 
-### Backtesting dependencies (optional, for stock-screener backtrader mode)
+### 3. Install backtesting dependencies (optional)
 
 ```bash
 pip3 install backtrader pandas
 ```
 
-### Configuration
+### 4. Set your API key
 
-Set your Reportify API key:
+Get your key at https://reportify.cn/skills/api-keys
+
 ```bash
 export REPORTIFY_API_KEY="your_api_key"
 ```
+
+### 5. Download skills
+
+See [install.md](install.md) for the full download commands.
 
 ## Quick Start
 
