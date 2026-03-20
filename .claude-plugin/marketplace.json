@@ -1,0 +1,30 @@
+{
+  "name": "reportify-skills-marketplace",
+  "owner": {
+    "name": "Reportify",
+    "url": "https://reportify.cn"
+  },
+  "metadata": {
+    "description": "Financial analysis skills marketplace by Reportify"
+  },
+  "plugins": [
+    {
+      "name": "reportify-ai",
+      "description": "Comprehensive CLI reference for Reportify financial data API",
+      "source": "https://github.com/reportify-ai/financial-skills/tree/main/reportify-ai",
+      "version": "1.0.0"
+    },
+    {
+      "name": "stock-analysis",
+      "description": "Stock analysis and deep financial research",
+      "source": "https://github.com/reportify-ai/financial-skills/tree/main/stock-analysis",
+      "version": "1.0.0"
+    },
+    {
+      "name": "stock-screener",
+      "description": "Quantitative stock screening and strategy backtesting",
+      "source": "https://github.com/reportify-ai/financial-skills/tree/main/stock-screener",
+      "version": "1.0.0"
+    }
+  ]
+}

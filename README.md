@@ -14,19 +14,37 @@ Each skill is self-contained and can be installed independently.
 
 ## Install via Claude Code
 
-Run the following in Claude Code to auto-install all skills:
+Add the marketplace, then install the skills you need:
+
+```bash
+claude plugin add-marketplace https://github.com/reportify-ai/financial-skills
+
+# Install all three
+claude plugin install reportify-ai
+claude plugin install stock-analysis
+claude plugin install stock-screener
+
+# Or just the ones you need
+claude plugin install reportify-ai          # CLI reference (recommended)
+claude plugin install stock-screener        # if you need quant screening
+```
+
+Or from within a Claude Code session:
 
 ```
-/install-skill https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
+/plugin add-marketplace https://github.com/reportify-ai/financial-skills
+/plugin install reportify-ai
+/plugin install stock-analysis
+/plugin install stock-screener
 ```
 
-Or paste the install URL directly in a conversation:
+## Install via OpenClaw
+
+Send the following message in any OpenClaw conversation to install Reportify financial skills (reportify-ai, stock-analysis, stock-screener):
 
 ```
-https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
+Install reportify skills: https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
 ```
-
-Claude Code will read the install guide and set up everything automatically — including downloading skills, installing `reportify-cli`, and configuring your API key.
 
 ## Manual Installation
 

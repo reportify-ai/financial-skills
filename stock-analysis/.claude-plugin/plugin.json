@@ -1,0 +1,8 @@
+{
+  "name": "stock-analysis",
+  "description": "Stock analysis and deep financial research — company profiles, financials, earnings, news, and agent-powered research",
+  "version": "1.0.0",
+  "author": { "name": "Reportify", "url": "https://reportify.cn" },
+  "keywords": ["finance", "stock", "analysis", "research", "earnings", "reportify"],
+  "skills": ["SKILL.md"]
+}
