@@ -65,13 +65,27 @@ curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/s
 curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/scenarios.md -o ~/.openclaw/skills/stock-screener/references/scenarios.md
 ```
 
-### 4. Set the API key for the current session
+### 4. Set the API key
 
-Use a session-scoped export first. Do not modify `~/.bashrc`, `~/.zshrc`, or other shell startup files unless the user explicitly asks for persistent setup.
+Write the API key to `~/.openclaw/.env` so the gateway can read it on startup:
+
+```bash
+mkdir -p ~/.openclaw
+# Append or update REPORTIFY_API_KEY in .env
+if grep -q '^REPORTIFY_API_KEY=' ~/.openclaw/.env 2>/dev/null; then
+  sed -i.bak 's/^REPORTIFY_API_KEY=.*/REPORTIFY_API_KEY="<USER_PROVIDED_KEY>"/' ~/.openclaw/.env && rm -f ~/.openclaw/.env.bak
+else
+  echo 'REPORTIFY_API_KEY="<USER_PROVIDED_KEY>"' >> ~/.openclaw/.env
+fi
+```
+
+Also export for the current session:
 
 ```bash
 export REPORTIFY_API_KEY="<USER_PROVIDED_KEY>"
 ```
+
+Note: The gateway needs to be restarted to pick up the new key from `~/.openclaw/.env`.
 
 ### 5. Verify the installed files
 
@@ -94,6 +108,7 @@ test -f ~/.openclaw/skills/stock-screener/references/scenarios.md && echo "scena
 
 echo "=== API Key ==="
 echo "REPORTIFY_API_KEY=${REPORTIFY_API_KEY:+is set}"
+grep -q 'REPORTIFY_API_KEY' ~/.openclaw/.env 2>/dev/null && echo ".env OK" || echo ".env MISSING - gateway will not have the key"
 ```
 
 ### 6. Verify the CLI works
