@@ -87,7 +87,7 @@ reportify-cli search crawl --input '{"urls": ["https://example.com"], "summary":
 
 - `quote` — Daily price history. Params: `symbol` (required, plain code), `start_date`, `end_date`
 - `index_quote` — Index price history. Params: `symbol` (required, index code: `000300`/`HSI`/`SPX`), `start_date`, `end_date`
-- `overview` — Company overview. Params: `symbols` (comma-separated), `names` (comma-separated)
+- `overview` — Company overview. Params: `symbols` (comma-separated, also accepts `symbol` for single stock), `names` (comma-separated)
 - `income_statement` / `balance_sheet` / `cashflow_statement` — Financial statements. Params: `symbol` (required), `period` (annual/quarterly), `limit`, `start_date`, `end_date`, `fiscal_year`, `fiscal_quarter`
 - `revenue_breakdown` — Revenue breakdown. Params: `symbol` (required), `period`, `limit`, `fiscal_year`
 - `shareholders` — Major shareholders. Param: `symbol`

@@ -131,7 +131,7 @@ Stock symbols must use `market:ticker` format:
 ### stock overview
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `symbols` | string | | - | Stock symbols, comma-separated (e.g., "AAPL,00700,600519") |
+| `symbols` | string | | - | Stock symbols, comma-separated (e.g., "AAPL,00700,600519"). Also accepts `symbol` for single stock |
 | `names` | string | | - | Stock names, comma-separated (e.g., "Tencent,Apple") |
 
 ### stock quote
