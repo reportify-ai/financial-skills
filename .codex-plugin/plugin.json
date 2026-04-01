@@ -1,0 +1,10 @@
+{
+  "name": "reportify-financial-skills",
+  "version": "1.0.0",
+  "description": "Financial analysis skills — stock analysis, quantitative screening, backtesting, and deep research powered by Reportify",
+  "author": {
+    "name": "Reportify",
+    "url": "https://reportify.cn"
+  },
+  "skills": "./"
+}

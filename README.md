@@ -12,38 +12,59 @@ A collection of financial analysis skills for AI agents, powered by [Reportify](
 
 Each skill is self-contained and can be installed independently.
 
-## Install via Claude Code
-
-Add the marketplace, then install the skills you need:
-
-```bash
-claude plugin add-marketplace https://github.com/reportify-ai/financial-skills
-
-# Install all three
-claude plugin install reportify-ai
-claude plugin install stock-analysis
-claude plugin install stock-screener
-
-# Or just the ones you need
-claude plugin install reportify-ai          # CLI reference (recommended)
-claude plugin install stock-screener        # if you need quant screening
-```
-
-Or from within a Claude Code session:
-
-```
-/plugin add-marketplace https://github.com/reportify-ai/financial-skills
-/plugin install reportify-ai
-/plugin install stock-analysis
-/plugin install stock-screener
-```
-
 ## Install via OpenClaw
 
 Send the following message in any OpenClaw conversation to install Reportify financial skills (reportify-ai, stock-analysis, stock-screener):
 
 ```
 Install reportify skills: https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
+```
+
+## Install in Codex / Claude Code
+
+### Claude Code
+
+```bash
+claude plugin add-marketplace https://github.com/reportify-ai/financial-skills
+claude plugin install reportify-ai
+claude plugin install stock-analysis
+claude plugin install stock-screener
+```
+
+Or from within a session: `/plugin add-marketplace ...` then `/plugin install ...`
+
+### Codex
+
+Add to your marketplace config (`~/.agents/plugins/marketplace.json`):
+
+```json
+{
+  "name": "reportify",
+  "plugins": [{
+    "name": "reportify-financial-skills",
+    "source": {
+      "source": "git",
+      "url": "https://github.com/reportify-ai/financial-skills"
+    },
+    "category": "Finance"
+  }]
+}
+```
+
+Or copy skills manually:
+
+```bash
+git clone https://github.com/reportify-ai/financial-skills.git /tmp/reportify-skills
+cp -r /tmp/reportify-skills/reportify-ai ~/.agents/skills/
+cp -r /tmp/reportify-skills/stock-analysis ~/.agents/skills/
+cp -r /tmp/reportify-skills/stock-screener ~/.agents/skills/
+```
+
+### Prerequisites
+
+```bash
+pip3 install reportify-cli
+export REPORTIFY_API_KEY="your_key"  # Get at https://reportify.cn/skills/api-keys
 ```
 
 ## Manual Installation
