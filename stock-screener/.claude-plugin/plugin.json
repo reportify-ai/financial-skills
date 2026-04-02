@@ -1,8 +1,0 @@
-{
-  "name": "stock-screener",
-  "description": "Quantitative stock screening and strategy backtesting — 80+ technical indicators and fundamental factors",
-  "version": "1.0.0",
-  "author": { "name": "Reportify", "url": "https://reportify.cn" },
-  "keywords": ["finance", "quant", "screening", "backtesting", "reportify"],
-  "skills": ["SKILL.md"]
-}

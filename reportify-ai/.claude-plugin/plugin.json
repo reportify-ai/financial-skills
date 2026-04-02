@@ -1,8 +1,0 @@
-{
-  "name": "reportify-ai",
-  "description": "Comprehensive CLI reference for Reportify financial data API — search, stock, quant, agent modules",
-  "version": "1.0.0",
-  "author": { "name": "Reportify", "url": "https://reportify.cn" },
-  "keywords": ["finance", "stock", "search", "quant", "reportify"],
-  "skills": ["SKILL.md"]
-}

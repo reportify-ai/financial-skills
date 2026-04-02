@@ -49,20 +49,20 @@ Download the skill definitions and references from GitHub:
 ```bash
 # reportify-ai (comprehensive CLI reference)
 mkdir -p ~/.openclaw/skills/reportify-ai/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/SKILL.md -o ~/.openclaw/skills/reportify-ai/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/api_reference.md -o ~/.openclaw/skills/reportify-ai/references/api_reference.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/reportify-ai/references/formula.md -o ~/.openclaw/skills/reportify-ai/references/formula.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/reportify-ai/SKILL.md -o ~/.openclaw/skills/reportify-ai/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/reportify-ai/references/api_reference.md -o ~/.openclaw/skills/reportify-ai/references/api_reference.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/reportify-ai/references/formula.md -o ~/.openclaw/skills/reportify-ai/references/formula.md
 
 # stock-analysis (individual stock analysis + deep research)
 mkdir -p ~/.openclaw/skills/stock-analysis/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/SKILL.md -o ~/.openclaw/skills/stock-analysis/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-analysis/references/api_reference.md -o ~/.openclaw/skills/stock-analysis/references/api_reference.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/stock-analysis/SKILL.md -o ~/.openclaw/skills/stock-analysis/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/stock-analysis/references/api_reference.md -o ~/.openclaw/skills/stock-analysis/references/api_reference.md
 
 # stock-screener (quantitative screening + backtesting)
 mkdir -p ~/.openclaw/skills/stock-screener/references
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/SKILL.md -o ~/.openclaw/skills/stock-screener/SKILL.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/formula.md -o ~/.openclaw/skills/stock-screener/references/formula.md
-curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/stock-screener/references/scenarios.md -o ~/.openclaw/skills/stock-screener/references/scenarios.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/stock-screener/SKILL.md -o ~/.openclaw/skills/stock-screener/SKILL.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/stock-screener/references/formula.md -o ~/.openclaw/skills/stock-screener/references/formula.md
+curl -fSL https://raw.githubusercontent.com/reportify-ai/financial-skills/main/skills/stock-screener/references/scenarios.md -o ~/.openclaw/skills/stock-screener/references/scenarios.md
 ```
 
 ### 4. Set the API key

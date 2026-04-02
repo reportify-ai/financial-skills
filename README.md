@@ -28,19 +28,17 @@ CLI:
 
 ```bash
 claude plugin marketplace add reportify-ai/financial-skills
-claude plugin install reportify-ai
-claude plugin install stock-analysis
-claude plugin install stock-screener
+claude plugin install reportify-financial-skills
 ```
 
 Or from within a Claude Code session:
 
 ```
 /plugin marketplace add reportify-ai/financial-skills
-/plugin install reportify-ai
-/plugin install stock-analysis
-/plugin install stock-screener
+/plugin install reportify-financial-skills
 ```
+
+Installs all three skills (reportify-ai, stock-analysis, stock-screener) as one plugin.
 
 ### Codex
 
@@ -64,9 +62,9 @@ Or copy skills manually:
 
 ```bash
 git clone https://github.com/reportify-ai/financial-skills.git /tmp/reportify-skills
-cp -r /tmp/reportify-skills/reportify-ai ~/.agents/skills/
-cp -r /tmp/reportify-skills/stock-analysis ~/.agents/skills/
-cp -r /tmp/reportify-skills/stock-screener ~/.agents/skills/
+cp -r /tmp/reportify-skills/skills/reportify-ai ~/.agents/skills/
+cp -r /tmp/reportify-skills/skills/stock-analysis ~/.agents/skills/
+cp -r /tmp/reportify-skills/skills/stock-screener ~/.agents/skills/
 ```
 
 ### Prerequisites
