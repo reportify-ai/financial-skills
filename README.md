@@ -24,14 +24,23 @@ Install reportify skills: https://raw.githubusercontent.com/reportify-ai/financi
 
 ### Claude Code
 
+CLI:
+
 ```bash
-claude plugin add-marketplace https://github.com/reportify-ai/financial-skills
+claude plugin marketplace add reportify-ai/financial-skills
 claude plugin install reportify-ai
 claude plugin install stock-analysis
 claude plugin install stock-screener
 ```
 
-Or from within a session: `/plugin add-marketplace ...` then `/plugin install ...`
+Or from within a Claude Code session:
+
+```
+/plugin marketplace add reportify-ai/financial-skills
+/plugin install reportify-ai
+/plugin install stock-analysis
+/plugin install stock-screener
+```
 
 ### Codex
 

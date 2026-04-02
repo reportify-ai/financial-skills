@@ -11,20 +11,29 @@
     {
       "name": "reportify-ai",
       "description": "Comprehensive CLI reference for Reportify financial data API",
-      "source": "https://github.com/reportify-ai/financial-skills/tree/main/reportify-ai",
-      "version": "1.0.0"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/reportify-ai/financial-skills.git",
+        "subpath": "reportify-ai"
+      }
     },
     {
       "name": "stock-analysis",
       "description": "Stock analysis and deep financial research",
-      "source": "https://github.com/reportify-ai/financial-skills/tree/main/stock-analysis",
-      "version": "1.0.0"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/reportify-ai/financial-skills.git",
+        "subpath": "stock-analysis"
+      }
     },
     {
       "name": "stock-screener",
       "description": "Quantitative stock screening and strategy backtesting",
-      "source": "https://github.com/reportify-ai/financial-skills/tree/main/stock-screener",
-      "version": "1.0.0"
+      "source": {
+        "source": "url",
+        "url": "https://github.com/reportify-ai/financial-skills.git",
+        "subpath": "stock-screener"
+      }
     }
   ]
 }
