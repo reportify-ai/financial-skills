@@ -12,7 +12,13 @@ A collection of financial analysis skills for AI agents, powered by [Reportify](
 
 Each skill is self-contained and can be installed independently.
 
-## Install via OpenClaw
+## Install
+
+```bash
+npx skills add reportify-ai/financial-skills --all -y -g
+```
+
+## Install in OpenClaw
 
 Send the following message in any OpenClaw conversation to install Reportify financial skills (reportify-ai, stock-analysis, stock-screener):
 
