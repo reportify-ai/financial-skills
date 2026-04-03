@@ -12,39 +12,43 @@ A collection of financial analysis skills for AI agents, powered by [Reportify](
 
 Each skill is self-contained and can be installed independently.
 
-## Install
+## Step 1: Install CLI & SDK
+
+```bash
+pip3 install reportify-cli                # required for all skills
+pip3 install reportify-sdk                # required for stock-screener
+pip3 install backtrader pandas            # optional, for backtesting
+```
+
+## Step 2: Install Skills
+
+### Universal
 
 ```bash
 npx skills add reportify-ai/financial-skills --all -y -g
 ```
 
-## Install in OpenClaw
+### OpenClaw
 
-Send the following message in any OpenClaw conversation to install Reportify financial skills (reportify-ai, stock-analysis, stock-screener):
+Send the following message in any OpenClaw conversation:
 
 ```
 Install reportify skills: https://raw.githubusercontent.com/reportify-ai/financial-skills/main/install.md
 ```
 
-## Install in Codex / Claude Code
-
 ### Claude Code
-
-CLI:
 
 ```bash
 claude plugin marketplace add reportify-ai/financial-skills
 claude plugin install reportify-financial-skills
 ```
 
-Or from within a Claude Code session:
+Or from within a session:
 
 ```
 /plugin marketplace add reportify-ai/financial-skills
 /plugin install reportify-financial-skills
 ```
-
-Installs all three skills (reportify-ai, stock-analysis, stock-screener) as one plugin.
 
 ### Codex
 
@@ -73,44 +77,16 @@ cp -r /tmp/reportify-skills/skills/stock-analysis ~/.agents/skills/
 cp -r /tmp/reportify-skills/skills/stock-screener ~/.agents/skills/
 ```
 
-### Prerequisites
-
-```bash
-pip3 install reportify-cli
-export REPORTIFY_API_KEY="your_key"  # Get at https://reportify.cn/skills/api-keys
-```
-
-## Manual Installation
-
-### 1. Install CLI (required for all skills)
-
-```bash
-pip3 install reportify-cli
-```
-
-### 2. Install Python SDK (required for stock-screener)
-
-```bash
-pip3 install reportify-sdk
-```
-
-### 3. Install backtesting dependencies (optional)
-
-```bash
-pip3 install backtrader pandas
-```
-
-### 4. Set your API key
+## Step 3: Set API Key
 
 Get your key at https://reportify.cn/skills/api-keys
 
 ```bash
 export REPORTIFY_API_KEY="your_api_key"
+
+# To persist, add to your shell config:
+echo 'export REPORTIFY_API_KEY="your_api_key"' >> ~/.zshrc
 ```
-
-### 5. Download skills
-
-See [install.md](install.md) for the full download commands.
 
 ## Quick Start
 
