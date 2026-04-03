@@ -83,9 +83,19 @@ Get your key at https://reportify.cn/skills/api-keys
 
 ```bash
 export REPORTIFY_API_KEY="your_api_key"
+```
 
-# To persist, add to your shell config:
+To persist, add to your shell config:
+
+```bash
+# macOS
 echo 'export REPORTIFY_API_KEY="your_api_key"' >> ~/.zshrc
+
+# Linux
+echo 'export REPORTIFY_API_KEY="your_api_key"' >> ~/.bashrc
+
+# Windows (PowerShell)
+[Environment]::SetEnvironmentVariable("REPORTIFY_API_KEY", "your_api_key", "User")
 ```
 
 ## Quick Start
