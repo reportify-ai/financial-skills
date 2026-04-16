@@ -36,7 +36,7 @@ export REPORTIFY_API_KEY="your_api_key"
 | Module | Parameter | Format | Example |
 |--------|-----------|--------|---------|
 | `stock` | `start_date` / `end_date` | `YYYY-MM-DD` | `"2025-01-01"` |
-| `quant minute/kline_1m` | `start_datetime` / `end_datetime` | `YYYY-MM-DD HH:MM:SS` | `"2026-03-14 09:30:00"` |
+| `quant minute/minute_batch/kline/kline_batch` | `start_datetime` / `end_datetime` | `YYYY-MM-DD HH:MM:SS` | `"2026-03-14 09:30:00"` |
 | `quant ohlcv` | `start_date` / `end_date` | `YYYY-MM-DD` | `"2025-01-01"` |
 | `search` | `start_datetime` / `end_datetime` | `YYYY-MM-DD` or `YYYY-MM-DD HH:MM:SS` | `"2025-01-01"` |
 
@@ -127,13 +127,13 @@ reportify-cli stock shareholders --input '{"symbol": "600519"}' --format json
 
 ## Quant Module
 
-- `minute` / `minute_batch` — Real-time minute data. Params: `symbol`/`symbols` (required), `start_datetime` (required, `YYYY-MM-DD HH:MM:SS`), `end_datetime` (required), `market` (default `cn`)
-- `kline_1m` / `kline_1m_batch` — 1-minute kline. Same params as minute
+- `minute` / `minute_batch` — 1-minute intraday data. Params: `symbol`/`symbols` (required), `start_datetime` (required, `YYYY-MM-DD HH:MM:SS`), `end_datetime` (required), `market` (default `cn`)
+- `kline` / `kline_batch` — Unified kline endpoint. Params: `symbol`/`symbols` (required), `kline_type` (`1M`/`5M`/`15M`/`30M`/`60M`/`1D`/`1W`/`1MO`, default `1D`), `market`, `stock_type` (`stock`/`etf`/`index`/`sw`, default `stock`), `start_datetime`, `end_datetime`
 - `ohlcv` / `ohlcv_batch` — Daily OHLCV. Params: `symbol`/`symbols` (required), `market`, `start_date`, `end_date`
-- `compute_indicators` / `compute_factors` — Compute indicators/factors. Params: `symbols` (required, list), `formula` (required), `market`, `start_date`, `end_date`
-- `screen` — Stock screening. Params: `formula` (required, boolean), `market`, `check_date`, `symbols` (optional stock pool)
-- `backtest` — Strategy backtest. Params: `symbol` (required), `start_date` (required), `end_date` (required), `entry_formula` (required), `exit_formula`, `market`, `initial_cash`, `commission`, `stop_loss`, `sizer_percent`, `labels`
-- `list_indicators` / `list_factors` — List available functions
+- `factors_compute` — Compute factors (includes technical indicators like MACD/RSI/KDJ and fundamental factors like PE/ROE). Params: `symbols` (required, list), `formula` (required), `market`, `start_date`, `end_date`
+- `factors_screen` — Stock screening. Params: `formula` (required, boolean), `market`, `check_date`, `symbols` (optional stock pool)
+- `backtest` — Strategy backtest. Params: `start_date` (required), `end_date` (required), `symbols` or `filter_formula` (one required), `entry_formula`/`exit_formula` or `strategy_code` (mutually exclusive), `market`, `initial_cash`, `buy_commission`/`sell_commission`, `slippage`, `stop_loss`, `position_size` (default None), `max_positions` (default None), `cheat_on_open` (default False), `signal_factors`
+- `factors` — List available factors, functions, and indicators. Params: `market`
 
 ```bash
 # Real-time intraday minute data

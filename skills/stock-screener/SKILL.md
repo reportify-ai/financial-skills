@@ -46,7 +46,7 @@ except ImportError:
     subprocess.check_call(["pip", "install", "reportify-sdk"])
 
 from reportify_sdk import Reportify
-client = Reportify(timeout=60)
+client = Reportify(timeout=120)
 ```
 
 ### Workflow
@@ -58,7 +58,7 @@ import json
 from datetime import datetime, timedelta
 from reportify_sdk import Reportify
 
-client = Reportify(timeout=60)
+client = Reportify(timeout=120)
 
 # Dynamic date: before 16:00 use yesterday, after use today
 now = datetime.now()
@@ -104,21 +104,31 @@ for item in results:
 ### SDK Methods
 
 ```python
+# List available factors (call this FIRST before constructing formulas)
+factors = client.quant.factors(market="cn")
+
 # Screen stocks
 df = client.quant.factors_screen(formula="(PE_TTM() < 20) & (ROE() > 0.15)", market="cn", check_date=check_date)
 
-# Compute indicators
-df = client.quant.indicators_compute(symbols=["000001"], formula="MACD()", market="cn", start_date="2026-01-01")
-
-# Compute factors
+# Compute factors (includes technical indicators like MACD, RSI, KDJ)
+df = client.quant.factors_compute(symbols=["000001"], formula="MACD()", market="cn", start_date="2026-01-01")
 df = client.quant.factors_compute(symbols=["000001"], formula="PE_TTM()", market="cn")
 
 # Get OHLCV
 df = client.quant.ohlcv("600519", market="cn", start_date="2025-01-01")
 df = client.quant.ohlcv_batch(["000001", "600519"], market="cn")
 
-# Company info
-info = client.stock.overview(symbols="000001")
+# Kline (unified endpoint, all periods via kline_type)
+df = client.quant.kline("600519", kline_type="5M", start_datetime="2026-03-14 09:30:00", end_datetime="2026-03-14 15:00:00")
+
+# Company info — returns {"items": [company, ...]} with nested stockList
+# Usually not needed — factors_screen returns name/name_en/close; use factors_compute for listing/market cap
+result = client.stock.overview(symbols="000001,600519")
+companies = result.get("items", [result]) if isinstance(result, dict) else result
+for company in companies:
+    for stock in company.get("stockList", []):
+        if stock.get("market") == "CN":
+            print(stock["symbol"], stock.get("stock_name"), stock.get("ipo_date"))
 ```
 
 ---
@@ -144,10 +154,10 @@ reportify-cli quantlist_factors --format table
 ### CLI Quick Backtest (`reportify-cli quantbacktest`)
 
 ```bash
-reportify-cli quantbacktest --input '{"symbol": "000001", "start_date": "2024-01-01", "end_date": "2025-01-01", "entry_formula": "CROSS(MA(CLOSE, 5), MA(CLOSE, 20))", "exit_formula": "CROSSDOWN(MA(CLOSE, 5), MA(CLOSE, 20))", "initial_cash": 100000}' --format json
+reportify-cli quant backtest --input '{"start_date": "2024-01-01", "end_date": "2025-01-01", "symbols": ["000001"], "entry_formula": "CROSS(MA(CLOSE, 5), MA(CLOSE, 20))", "exit_formula": "CROSSDOWN(MA(CLOSE, 5), MA(CLOSE, 20))", "initial_cash": 100000}' --format json
 ```
 
-Params: `symbol` (required), `start_date` (required), `end_date` (required), `entry_formula` (required), `exit_formula`, `market`, `initial_cash`, `commission`, `stop_loss`, `sizer_percent`, `labels` (dict for extra indicators in output).
+Params: `start_date` (required), `end_date` (required), `symbols` (list, required if filter_formula not provided), `filter_formula` (required if symbols not provided), `entry_formula` or `strategy_code` (mutually exclusive), `exit_formula`, `market`, `initial_cash`, `commission`/`buy_commission`/`sell_commission`, `min_commission_amount`, `slippage`, `stop_loss`, `position_size`, `max_positions`, `cheat_on_open`, `signal_factors`.
 
 ### Python Backtrader (Full Control)
 

@@ -152,6 +152,8 @@ Stock symbols must use `market:ticker` format:
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `symbol` | string | ✓ | - | Stock symbol |
+| `type` | string | | shareholders | "shareholders" or "outstanding_shareholders" |
+| `limit` | int | | 10 | Number of shareholders to return |
 
 ### stock revenue_breakdown
 | Parameter | Type | Required | Default | Description |
@@ -225,21 +227,26 @@ Stock symbols must use `market:ticker` format:
 | `start_date` | str | | 1 month ago | Start date |
 | `end_date` | str | | today | End date |
 
-### quant kline_1m
+### quant kline
+Unified kline endpoint supporting all periods via `kline_type`.
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `symbol` | str | ✓ | - | Stock code (e.g., 600519) |
-| `start_datetime` | str | ✓ | - | Start datetime (YYYY-MM-DD HH:MM:SS) |
-| `end_datetime` | str | ✓ | - | End datetime (YYYY-MM-DD HH:MM:SS) |
+| `kline_type` | str | | 1D | `1M`/`5M`/`15M`/`30M`/`60M` (intraday), `1D`/`1W`/`1MO` |
 | `market` | str | | cn | cn / hk / us |
+| `stock_type` | str | | stock | stock / etf / index / sw |
+| `start_datetime` | str | | - | Start datetime (YYYY-MM-DD HH:MM:SS) |
+| `end_datetime` | str | | - | End datetime (YYYY-MM-DD HH:MM:SS) |
 
-### quant kline_1m_batch
+### quant kline_batch
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `symbols` | list[str] | ✓ | - | Stock codes (e.g., [600519, 000001]) |
-| `start_datetime` | str | ✓ | - | Start datetime (YYYY-MM-DD HH:MM:SS) |
-| `end_datetime` | str | ✓ | - | End datetime (YYYY-MM-DD HH:MM:SS) |
+| `kline_type` | str | | 1D | Same as kline |
 | `market` | str | | cn | cn / hk / us |
+| `stock_type` | str | | stock | stock / etf / index / sw |
+| `start_datetime` | str | | - | Start datetime (YYYY-MM-DD HH:MM:SS) |
+| `end_datetime` | str | | - | End datetime (YYYY-MM-DD HH:MM:SS) |
 
 ### quant minute
 | Parameter | Type | Required | Default | Description |
@@ -257,7 +264,8 @@ Stock symbols must use `market:ticker` format:
 | `end_datetime` | str | ✓ | - | End datetime (YYYY-MM-DD HH:MM:SS) |
 | `market` | str | | cn | cn / hk / us |
 
-### quant indicators_compute / factors_compute
+### quant factors_compute
+Compute factors (includes technical indicators like MACD/RSI/KDJ and fundamental factors like PE/ROE).
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `symbols` | list[str] | ✓ | - | Stock codes (e.g., 600519 for CN market) |
@@ -266,19 +274,36 @@ Stock symbols must use `market:ticker` format:
 | `start_date` | str | | 3 months ago | Start date |
 | `end_date` | str | | today | End date |
 
+### quant factors
+List available factors, functions, and indicators.
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `market` | str | | cn | cn / hk / us |
+
 ### quant backtest
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `symbol` | str | ✓ | - | Stock symbol |
-| `start_date` | str | ✓ | - | Backtest start |
-| `end_date` | str | ✓ | - | Backtest end |
-| `entry_formula` | str | ✓ | - | Entry signal formula. Both sides of &/\|/AND/OR must be wrapped in () |
-| `exit_formula` | str | | - | Exit signal formula. Both sides of &/\|/AND/OR must be wrapped in () |
+| `start_date` | str | ✓ | - | Backtest start (YYYY-MM-DD) |
+| `end_date` | str | ✓ | - | Backtest end (YYYY-MM-DD) |
+| `symbols` | list[str] | | None | Stock codes (REQUIRED if filter_formula is not provided) |
+| `filter_formula` | str | | None | Pre-filter formula (REQUIRED if symbols is not provided) |
+| `entry_formula` | str | | None | Entry signal formula (mutually exclusive with strategy_code) |
+| `strategy_code` | str | | None | Custom strategy python code (mutually exclusive with entry_formula) |
+| `exit_formula` | str | | None | Exit signal formula |
 | `market` | str | | cn | Market |
-| `initial_cash` | float | | 100000 | Initial capital |
-| `commission` | float | | 0 | Commission rate |
-| `stop_loss` | float | | 0 | Stop loss % (0=disabled) |
-| `sizer_percent` | int | | 99 | Position size % |
+| `initial_cash` | float | | 100000.0 | Initial capital |
+| `commission` | float | | 0.0 | Commission rate for both buy and sell |
+| `buy_commission` | float | | 0.0 | Buy commission (takes priority over commission) |
+| `sell_commission` | float | | 0.0 | Sell commission (takes priority over commission) |
+| `min_commission_amount` | float | | 0.0 | Minimum commission per trade in CNY |
+| `slippage` | float | | 0.0 | Slippage ratio |
+| `stop_loss` | float | | 0.0 | Stop loss ratio (0=disabled) |
+| `position_size` | float \| None | | None | Max position size ratio per stock (None=no limit) |
+| `max_positions` | int \| None | | None | Max number of holding stocks (None=no limit) |
+| `min_volume` | int | | 100 | Minimum trading volume |
+| `auto_close` | bool | | true | Auto close positions |
+| `cheat_on_open` | bool | | false | Execute T-day signals at T-day open (false=T+1 open) |
+| `signal_factors` | dict[str, str] | | None | Precomputed factors for strategy_code |
 
 ### quant factors_screen
 | Parameter | Type | Required | Default | Description |
@@ -299,6 +324,7 @@ Stock symbols must use `market:ticker` format:
 | `title` | string | | - | Conversation title |
 | `conversation_type` | string | | - | Conversation type: agent_chat, task_chat, debug_chat, bot_chat |
 | `meta` | dict | | - | Metadata dict |
+| `channel` | string | | - | Source channel for callback (universal-bridge, openclaw-weixin, telegram) |
 
 ### agent chat
 | Parameter | Type | Required | Default | Description |
